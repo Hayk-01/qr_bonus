@@ -23,7 +23,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.WithMachineName()
     .WriteTo.Debug()
     .WriteTo.Console()
-    /*.WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
+    .WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
     {
         opts.DataStream = new DataStreamName("logs", builder.Configuration["ElasticConfiguration:DataSet"]!,
             builder.Configuration["ElasticConfiguration:Namespace"]!);
@@ -40,9 +40,7 @@ Log.Logger = new LoggerConfiguration()
         {
             transport.Authentication(new BasicAuthentication(builder.Configuration["ElasticConfiguration:Username"]!,
                 builder.Configuration["ElasticConfiguration:Password"]!));
-     
-     })
-     */
+        })
     .Enrich.WithProperty("Environment", builder.Environment.EnvironmentName)
     .CreateBootstrapLogger();
 
@@ -57,7 +55,7 @@ try
         .MinimumLevel.Override("QRBonus", LogEventLevel.Information)
         .Enrich.FromLogContext()
         .WriteTo.Console()
-        /*.WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
+        .WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
         {
             opts.DataStream = new DataStreamName("logs", builder.Configuration["ElasticConfiguration:DataSet"]!,
                 builder.Configuration["ElasticConfiguration:Namespace"]!);
@@ -76,9 +74,7 @@ try
                     builder.Configuration["ElasticConfiguration:Username"]!,
                     builder.Configuration["ElasticConfiguration:Password"]!));
             })
-            */
         .Enrich.WithProperty("Environment", builder.Environment.EnvironmentName));
-        
 
     // Add services to the container.
     builder.Services.AddCors();
