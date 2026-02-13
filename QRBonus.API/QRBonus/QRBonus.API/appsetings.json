@@ -1,0 +1,58 @@
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Error",
+      "Override": {
+        "QRBonus": "Information"
+      }
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://localhost:9704"
+      }
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "QRBonus": "Host=127.0.0.1;Port=5432;Username=postgres;Password=uXyXWbwa_m@ZJE23;Database=QRBonus;Pooling=true;Maximum Pool Size=1000;Timeout=300;CommandTimeout=300;"
+  },
+  "HangfireSettings": {
+    "UserName": "admin",
+    "Password": "password"
+  },
+  "TwilioSettings": {
+    "AccountSid": "AC43f5b3a6b56bf9dda8d7db6181387488",
+    "AuthToken": "448ce2ebd051585f0633d37bf99a15c6",
+    "FromNumber": "+16814818680",
+    "IsTestMode": false
+  },
+  "MsgGeSettings": {
+    "Password": "Z0hfjlHHTj",
+    "AlternatePassword": "2jqqJip@mAV",
+    "Username": "martinpamach",
+    "ClientId": "1121",
+    "ServiceId": "3058",
+    "IsTestMode": false
+  },
+  "NikitaSettings": {
+    "Url": "http://45.131.124.7/broker-api/send",
+    "Login": "martinstar",
+    "Pass": "MPst33r",
+    "Originator": "MARTIN STAR",
+    "Priority": "2",
+    "IsTestMode": false
+  },
+  "ElasticConfiguration": {
+    "Uri": "https://elasticoff.innline.net",
+    "DataSet": "QRBonus",
+    "Namespace": "Prod",
+    "Username": "elastic",
+    "Password": "ypk_ujLsAy=IM9Nyakf_"
+  },
+  "FileSettings": {
+    "FilePath": "/var/www/website/QR_Bonus/QrBonusAdminMedia",
+    "RequestPath": "/media"
+  }
+}
