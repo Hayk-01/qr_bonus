@@ -1,0 +1,33 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+              <span class="text-muted">{{'admin_qr_code' | translation}}</span>
+            </h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body" *ngIf="data">
+                <div class="form-row">
+                    <div class="col-md-6 col-12">
+                        <span>{{'admin_value' | translation}} <span class="text-muted">{{data.value}}</span></span>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <span>{{'admin_campaign_product_id' | translation}} <span class="text-muted">{{data.productCampaignId}}</span></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 col-12">
+                        <span>{{'admin_prize_id' | translation}} <span class="text-muted">{{data.prizeId}}</span></span>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <span>{{'admin_customer_id' | translation}} <span class="text-muted">{{data.customerId}}</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="save_cancel_buttons">
+    <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="ft-x mr-1"></i>{{'admin_cancel' | translation}}</button>
+  </div>

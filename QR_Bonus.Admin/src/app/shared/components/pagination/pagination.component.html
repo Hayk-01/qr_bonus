@@ -1,0 +1,15 @@
+<div class="pagination" *ngIf="show">
+  <div class="buttons">
+    <div>
+      <input appOnlyRealNumbers [doNotallowFirstZero]="true" [value]="pagination.pageNumber" style="height: 40px; width: 80px" appNoStartOnWhiteSpace type="text" class="form-control" id="iconLeft1" placeholder="стр." #input (blur)="goto(input.value)" (keydown.enter)="goto(input.value)">
+    </div>
+    <button class="arrow primary" (click)="arrowPress(false)" [class.disable]="pagination.pageNumber === 1 || pagination.pageNumber === 0"><i class="ft-chevron-left"></i></button>
+    <div style="display: flex; gap: 5px;">
+      <span>on page .</span>
+      <span><b>{{pagination.pageNumber}}</b></span>
+      <span>from</span>
+      <span>{{pagination.totalPages}}</span>
+    </div>
+    <button class="arrow primary" (click)="arrowPress(true)" [class.disable]="pagination.pageNumber === pagination.totalPages || pagination.totalRecords === undefined"><i class="ft-chevron-right"></i></button>
+  </div>
+</div>

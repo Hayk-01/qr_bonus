@@ -1,0 +1,46 @@
+<div class="form-group">
+  <label class="label-style">
+    <span [ngStyle]="{'color': invalid && touched? 'red' : !invalid && touched? 'green' : 'black'}">{{label}}</span>
+    <span *ngIf="requierd" style="color: red;"> *</span>
+  </label>
+  <fieldset
+    class="form-group position-relative is-invalid"
+    [class.invalid-single]="invalid && touched && !multiple"
+    [class.invalid-multiple]="invalid && touched && multiple"
+    [class.valid-single]="!invalid && touched && !multiple"
+    [class.valid-multiple]="!invalid && touched && multiple"
+  >
+      <ng-select
+        #searchinput
+        [items]="items"
+        bindLabel="name"
+        bindValue="id"
+        [multiple]="multiple"
+        [placeholder]="placeholder"
+        [(ngModel)]="value"
+        (change)="setValue()"
+        [disabled]="disabled"
+        [searchable]="true"
+        class="is-invalid"
+        [virtualScroll]="true"
+        (scrollToEnd)="scrollEnd()"
+        (search)="search($event)"
+        (clear)="onClearAll()"
+        appendTo="body"
+        [clearable]="clearable"
+      >
+
+        <ng-template ng-label-tmp let-item="item">
+            <span>{{(item.name == undefined || item.name.trim() == "" || item.name == null) ? '---' : item.name}}</span>
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item">
+          <div class="select-item" title="{{item.title}}" [ngStyle]="{'color': item.isDeleted ? 'red' : 'none'}">
+            <span>{{(item.name == undefined || item.name.trim() == "" || item.name == null) ? '---' : item.name}}</span>
+          </div>
+        </ng-template>
+
+      </ng-select>
+      <div *ngIf="invalid && touched" class="invalid-tooltip">{{errorMessage}}</div>
+  </fieldset>
+</div>

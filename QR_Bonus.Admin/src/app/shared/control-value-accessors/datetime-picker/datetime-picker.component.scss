@@ -1,0 +1,75 @@
+.date_time_picker_container {
+  width: 100%;
+  margin-bottom: 15px;
+  .label{
+      height: 20px;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 0;
+      box-sizing: border-box;
+  }
+  .date_time_picker{
+      // border: 1px solid rgb(230, 230, 230);
+      border-radius: 5px;
+      // padding: 3px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: 100%;
+      .input_container{
+        width: 100%;
+        margin-bottom: 0;
+        input{
+          background-color: white;
+        }
+      }
+      .form-inline{
+          .form-group{
+              .input-group{
+                  margin-bottom: 0;
+              }
+          }
+      }
+  }
+
+  .error_message{
+      display: none;
+      color: rgb(252, 89, 89);
+      font-size: 13px;
+  }
+}
+
+.invalid {
+  margin-bottom: 2px !important;
+  label{
+      color: rgb(252, 89, 89);
+  }
+  .error_message{
+      display: block;
+  }
+}
+
+.invalid_border{
+  border: 1px solid #F55252 !important;
+  border-radius: 4px;
+}
+
+.reset_date_time{
+  padding: 3px;
+  cursor: pointer;
+  &:hover{
+      color: red;
+  }
+}
+
+::ng-deep {
+  ngb-timepicker{
+    .ngb-tp-input {
+      background-color: white;
+      &:focus{
+        background-color: white;
+      }
+    }
+  }
+}

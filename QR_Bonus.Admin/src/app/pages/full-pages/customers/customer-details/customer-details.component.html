@@ -1,0 +1,83 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">
+            <span class="text-muted">{{'admin_customer_details' | translation}}</span>
+          </h4>
+      </div>
+      <div class="card-content">
+        <div class="card-body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="active == 1" (click)="active = 1">{{'admin_campaign_basic_info' | translation}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="active == 2" (click)="active = 2">{{'admin_customer_history' | translation}}</a>
+            </li>
+          </ul>
+          <div [class.show]="active == 1" [class.hide]="active != 1">
+            <div class="col-12 mt-3">
+              <h5 class="mb-2 text-bold-500"><i class="ft-info mr-2"></i>{{'admin_personal_info' | translation}}</h5>
+              <div class="table-responsive">
+                <table class="table table-borderless m-0">
+                  <tbody>
+                    <tr>
+                      <td><b>{{'admin_first_name' | translation}}</b></td>
+                      <td>{{data.firstName ?? '---'}}</td>
+                    </tr>
+                    <tr>
+                      <td><b>{{'admin_last_name' | translation}}</b></td>
+                      <td>{{data.lastName ?? '---'}}</td>
+                    </tr>
+                    <tr>
+                      <td><b>{{'admin_customer_phone_number' | translation}}</b></td>
+                      <td>{{data.phoneNumber ?? '---'}}</td>
+                    </tr>
+                    <tr>
+                      <td><b>{{'admin_customer_email' | translation}}</b></td>
+                      <td>{{data.email ?? '---'}}</td>
+                    </tr>
+                    <tr>
+                      <td><b>{{'admin_region' | translation}}</b></td>
+                      <td>{{data.region?.name ?? '---'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div [class.show]="active == 2" [class.hide]="active != 2">
+            <div class="row mt-2">
+              <div class="col">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let item of customerPrizePoints; let i = index">
+                    <div><strong>{{'admin_campaign_Id' | translation}} :</strong> {{item.campaignId}}</div>
+                    <div><strong>{{'admin_points' | translation}} :</strong> {{item.points}}</div>
+                    <ng-container *ngIf="item.prizes && item.prizes.length > 0">
+                      <button class="btn btn-sm btn-outline-primary mt-2" (click)="openPrizesBlock(i)">{{'admin_prizes' | translation}}</button>
+                      <div *ngIf="slectedIndex == i">
+                        <ul class="list-group mt-2">
+                          <li style="background-color: whitesmoke;" class="list-group-item py-2 px-3" *ngFor="let prize of item.prizes">
+                            <div><strong>{{'admin_name' | translation}} :</strong> {{prize.name}}</div>
+                            <div><strong>{{'admin_is_leaderboard_winnig' | translation}} :</strong> {{prize.isLeaderboard ? 'Yes' : 'No'}}</div>
+                            <div *ngIf="prize.link"><strong>{{'admin_product_image' | translation}} :</strong>
+                              <app-image [data]="prize.link"></app-image>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </ng-container>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <span *ngIf="customerPrizePoints.length === 0">{{'admin_no_data' | translation}}</span>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="save_cancel_buttons">
+  <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="ft-x mr-1"></i>{{'admin_back' | translation}}</button>
+</div>

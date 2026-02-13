@@ -1,0 +1,14 @@
+<div class="mt-1 title_buttons">
+  <div>
+    <h5>{{'admin_qr_codes' | translation}}</h5>
+  </div>
+  <div class="right_side_buttons">
+    <button class="btn btn-primary" (click)="exportToExcel()">{{'Download QR codes of receiving the prize' | translation}}</button>
+    <button class="btn btn-primary" (click)="openQrSCanDevice()">{{'admin_open_qr_scanner_device' | translation}}</button>
+    <button class="btn btn-primary" (click)="openScanner()">{{'admin_open_camera_scanner' | translation}}</button>
+  </div>
+</div>
+
+<app-dynamic-filters [filters]="filters"></app-dynamic-filters>
+
+<app-dynamic-table *ngIf="tableSettings" #table [settings]="tableSettings"></app-dynamic-table>

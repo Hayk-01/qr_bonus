@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QRBonus.DTO.ProductDtos
+{
+    public class ProductPointDto
+    {
+        public long ProductCampaignId { get; set; }
+        public long ProductId { get; set; }
+        public long Point { get; set; }
+
+        public ProductDto? Product { get; set; }
+    }
+}

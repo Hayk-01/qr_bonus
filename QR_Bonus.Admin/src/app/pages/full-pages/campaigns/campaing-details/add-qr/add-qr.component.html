@@ -1,0 +1,60 @@
+<div class="modal-header">
+    <h4 class="modal-title">
+        <span>{{'admin_generate_qr_codes' | translation}}</span>
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss({isSuccess: false})">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p *ngIf="campaignName">{{'admin_campaign' | translation}} <span class="text-muted">{{campaignName}}</span></p>
+    <p>{{'admin_product' | translation}} <span class="text-muted">{{data.product.name}}</span></p>
+    <form [formGroup]="form">
+      <div class="activation_date">
+        <app-datetime-picker
+          [showTime]="true"
+          [label]="'admin_activation_date_and_time' | translation"
+          formControlName="activationDate"
+          [touched]="touched"
+          [invalid]="form.get('activationDate').invalid"
+          [isDateTo]="true"
+          [min]="now"
+        >
+        </app-datetime-picker>
+      </div>
+      <div class="total_count_block">
+        <app-number-input appInputDebounceTime class="total_count_input" [(ngModel)]="totalCount" (debouncedValue)="totalCountInput()" [label]="'Total Count'" [placeholder]="'Total Count'" [ngModelOptions]="{standalone: true}"></app-number-input>
+        <span class="couints_info" *ngIf="totalCount">{{message}}</span>
+      </div>
+      <div style="width: 100%; display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 5px;">
+        <app-number-input style="width: 200pxpx;" [(ngModel)]="selectedValue.count" [ngModelOptions]="{standalone: true}" [label]="'admin_count' | translation" [placeholder]="'admin_count' | translation"></app-number-input>
+        <app-dropdown style="flex: 1;" [returnObject]="true" [(ngModel)]="selectedValue.prize" [ngModelOptions]="{standalone: true}" [dropdownData]="prizesDropdownData" [label]="'admin_prize' | translation" [placeholder]="'admin_prize' | translation"></app-dropdown>
+        <button style="margin-top: 9px;" type="button" class="btn btn-outline-success" (click)="addValue()" [disabled]="!selectedValue.prize || !selectedValue.count || selectedValue.count == 0 || !totalCount">+</button>
+      </div>
+      <hr>
+      <div class="form-row">
+          <ng-container *ngIf="qrCodeCounts.controls && qrCodeCounts.controls.length > 0">
+            <ul class="list-group mt-2 w-100">
+              <li class="list-group-item d-flex justify-content-between" *ngFor="let item of qrCodeCounts.value; let i = index">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div>
+                        <span>{{'admin_count' | translation}} : <span class="text-muted">{{item?.count}}</span></span>
+                        <span> / </span>
+                        <span>{{'admin_name' | translation}} : <span class="text-muted">{{item.prize?.name}}</span></span>
+                    </div>
+                    <div>
+                        <i class="ft-trash danger cursor-pointer mr-1" (click)="remove(i)"></i>
+                    </div>
+                </div>
+              </li>
+            </ul>
+          </ng-container>
+      </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary mt-1"
+        (click)="activeModal.close({isSuccess: false})">{{'admin_cancel' | translation}}</button>
+    <button type="button" class="btn btn-primary mt-1" (click)="generateQrCodes()" [class.disable]="disableGenerateButton">{{'admin_generate_qr_codes' | translation}}</button>
+</div>

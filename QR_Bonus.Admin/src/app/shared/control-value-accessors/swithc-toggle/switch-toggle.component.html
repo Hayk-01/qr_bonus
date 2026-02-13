@@ -1,0 +1,15 @@
+<div class="custom-switch custom-switch-secondary custom-control-inline mt-2">
+  <input
+    type="checkbox"
+    class="custom-control-input"
+    [id]="'id' + label"
+    [checked]="value"
+    [disabled]="disabled"
+    (input)="setValue($event)"
+    [ngClass]="{ 'is-invalid': invalid && touched, 'is-valid': !invalid && touched }"
+  >
+  <label class="custom-control-label mr-1 cursor-pointer label-style" [for]="'id' + label">
+    <span [ngStyle]="{'color': invalid && touched? 'red' : !invalid && touched? 'green' : 'black'}">{{label}}</span>
+    <span *ngIf="requierd" style="color: red;"> *</span>
+  </label>
+</div>

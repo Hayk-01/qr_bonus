@@ -1,0 +1,35 @@
+.label-style{
+  font-weight: 500;
+}
+.invalid-tooltip {
+  ::ng-deep {
+    color: red;
+    background: none;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+::ng-deep {
+  .invalid-single {
+    .ng-select.ng-select-single .ng-select-container {
+      border: 1px solid red;
+    }
+  }
+  .invalid-multiple {
+    .ng-select .ng-select-container {
+      border: 1px solid red;
+    }
+  }
+  .valid-single {
+    .ng-select.ng-select-single .ng-select-container {
+      border: 1px solid green;
+    }
+  }
+  .valid-multiple {
+    .ng-select .ng-select-container {
+      border: 1px solid green;
+    }
+  }
+}

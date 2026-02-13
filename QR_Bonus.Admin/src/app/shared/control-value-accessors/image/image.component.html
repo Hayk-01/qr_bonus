@@ -1,0 +1,5 @@
+<div class="images_viewer_container cursor-pointer">
+    <div *ngFor="let image of images; let i=index">
+        <img [ngStyle]="{height: height + 'px'}" [src]="image.thumb" (click)="open(i)" />
+    </div>
+</div>

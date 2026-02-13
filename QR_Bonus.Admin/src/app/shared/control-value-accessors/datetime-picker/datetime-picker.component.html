@@ -1,0 +1,29 @@
+<div class="form-group date_time_picker_container" [class.invalid]="touched && invalid">
+  <label class="label">{{label}}</label>
+  <div class="date_time_picker">
+    <div class="input-group input_container" [class.invalid_border]="touched && invalid">
+      <input
+        class="form-control"
+        container="body"
+        [readonly]="true"
+        placeholder="yyyy-mm-dd"
+        name="dp"
+        [(ngModel)]="date"
+        (ngModelChange)="setDateTime()"
+        ngbDatepicker
+        #d2="ngbDatepicker"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+      >
+      <div class="input-group-append">
+        <div class="input-group-text" (click)="d2.toggle()">
+          <i class="fa fa-calendar" style="cursor: pointer;"></i>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showTime">
+      <ngb-timepicker [spinners]="false" [(ngModel)]="time" (ngModelChange)="setDateTime()"></ngb-timepicker>
+    </div>
+  </div>
+  <div class="error_message">{{errorMessage}}</div>
+</div>

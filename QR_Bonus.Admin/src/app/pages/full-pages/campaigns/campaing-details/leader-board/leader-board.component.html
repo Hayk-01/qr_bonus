@@ -1,0 +1,29 @@
+<table class="table" *ngIf="data && data.length > 0; else nodata">
+    <thead>
+        <tr>
+            <th>{{'admin_leader_board_position' | translation}}</th>
+            <th>{{'admin_customer' | translation}}</th>
+            <th>{{'admin_points' | translation}}</th>
+            <th>{{'admin_prize' | translation}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of data">
+            <tr>
+                <td>{{item?.position}}</td>
+                <td>{{item?.customer?.firstName}} {{item?.customer?.lastName}}</td>
+                <td>{{item?.points}}</td>
+                <td class="d-flex justify-content-between">
+                    <span class="prize-text mr-2" style="color: #00ff2a;">{{item?.prize?.name}}</span>
+                    <app-image [height]="80" [data]="item?.prize?.link"></app-image>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+
+<ng-template #nodata>
+    <div class="text-center m-3">
+      <h6>{{'admin_no_data' | translation}}</h6>
+    </div>
+</ng-template>

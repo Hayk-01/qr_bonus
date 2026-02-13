@@ -1,0 +1,16 @@
+.scan_button_warpper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.message_text{
+  width: 100%;
+  text-align: center;
+  padding: 30px;
+  h5{
+    color: grey;
+  }
+}

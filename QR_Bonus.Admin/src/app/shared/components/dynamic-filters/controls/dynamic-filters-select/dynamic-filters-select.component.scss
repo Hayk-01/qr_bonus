@@ -1,0 +1,54 @@
+.form-group{
+  ::ng-deep{
+    margin: 0;
+  }
+}
+.select-item{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.label{
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  margin-bottom: 0px !important;
+}
+
+.deleted_item {
+  ::ng-deep {
+    .ng-select.ng-select-single .ng-select-container {
+      color: red;
+    }
+  }
+}
+
+.deleted_item {
+  color: red;
+}
+
+.selected_option {
+  font-size: .9em;
+  margin-bottom: 5px;
+  background-color: #ebf5ff;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+.remove-icon {
+  font-size: 13.5px;
+  border-right: 1px solid #b8dbff;
+  display: inline-block;
+  padding: 1px 5px;
+  cursor: pointer;
+
+}
+.remove-icon:hover {
+  background-color: #d1e8ff;
+}
+
+.selected_option_text {
+  display: inline-block;
+  padding: 1px 5px;
+  box-sizing: border-box;
+}

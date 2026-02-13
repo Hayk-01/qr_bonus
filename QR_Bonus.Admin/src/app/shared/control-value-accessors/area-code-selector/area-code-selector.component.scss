@@ -1,0 +1,37 @@
+.label-style{
+  font-weight: 500;
+}
+
+.error_message {
+  color: red;
+  background: none;
+  font-size: 12px;
+  padding: 0;
+}
+
+.invalid {
+  margin-bottom: -12px !important;
+}
+
+::ng-deep {
+  .invalid-single {
+    .ng-select.ng-select-single .ng-select-container {
+      border: 1px solid red;
+    }
+  }
+  .invalid-multiple {
+    .ng-select .ng-select-container {
+      border: 1px solid red;
+    }
+  }
+  .valid-single {
+    .ng-select.ng-select-single .ng-select-container {
+      border: 1px solid green;
+    }
+  }
+  .valid-multiple {
+    .ng-select .ng-select-container {
+      border: 1px solid green;
+    }
+  }
+}

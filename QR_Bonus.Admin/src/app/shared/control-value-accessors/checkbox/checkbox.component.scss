@@ -1,0 +1,15 @@
+.label-style{
+  font-weight: 500;
+}
+.invalid-tooltip {
+  ::ng-deep {
+    color: red;
+    background: none;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+  }
+}
+.checkbox{
+  margin-top: 32px;
+}

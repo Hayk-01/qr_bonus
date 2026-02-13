@@ -1,0 +1,77 @@
+<div class="table-container">
+
+  <div class="loader" *ngIf="loading">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a11"><stop offset="0" stop-color="#1e1e1f" stop-opacity="0"></stop>
+      <stop offset="1" stop-color="#1e1e1f"></stop></linearGradient><circle fill="none" stroke="url(#a11)" stroke-width="15" stroke-linecap="round"
+      stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform"
+      calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle>
+    </svg>
+  </div>
+
+  <div class="text-center m-3" *ngIf="nodata && !loading">
+    <h6>{{'admin_no_data' | translation}}</h6>
+  </div>
+
+  <table *ngIf="rows && rows.length > 0 && !loading">
+    <thead>
+      <tr>
+        <th *ngIf="dynamicTableSettings.actions?.length > 0"></th>
+        <th scope="col" *ngIf="dynamicTableSettings.hideId === undefined ? true : !dynamicTableSettings.hideId"><b>ID</b></th>
+        <ng-container *ngFor="let item of dynamicTableSettings.items">
+          <th>{{item.name}}</th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let row of rows">
+        <tr>
+          <td *ngIf="dynamicTableSettings.actions?.length > 0">
+            <ng-container *ngFor="let action of dynamicTableSettings.actions">
+              <ng-container *ngIf="action === ActionType.Edit">
+                <span class="cursor-pointer m-1" [routerLink]="'edit/' + row.id"><i class="ft-edit-2 info font-weight-bolder"></i></span>
+              </ng-container>
+              <ng-container *ngIf="action === ActionType.Delete">
+                <span class="cursor-pointer m-1" (click)="onDelete(row.id)"><i class="ft-trash danger font-weight-bolder"></i></span>
+              </ng-container>
+            </ng-container>
+          </td>
+          <td *ngIf="dynamicTableSettings.hideId === undefined ? true : !dynamicTableSettings.hideId"><b>{{row.id}}</b></td>
+          <td *ngFor="let item of dynamicTableSettings.items">
+            <div>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Text">
+                <div class="text_container">
+                  {{row | tableRowValue : item.prop}}
+                </div>
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Number">
+                {{row | tableRowValue : item.prop}}
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Boolean">
+                {{(row | tableRowValue : item.prop) ? 'Yes' : 'No'}}
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Date">
+                {{(row | tableRowValue : item.prop) !== '---' ?  (row | tableRowValue : item.prop | convertToZulu | date : 'dd/MM/yyyy H:mm') : '---'}}
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.QrCode">
+                <app-qr-code-generator [value]="row | tableRowValue : item.prop"></app-qr-code-generator>
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Button">
+                <button *ngIf="item.customAction.hide ? !item.customAction.hide(row) : true; else noaction" class="btn action_button" [style.background-color]="item.customAction.backgroundColor ? item.customAction.backgroundColor(row) : '' " [class.disabled_action_button]="item.customAction.isDisabled ? item.customAction.isDisabled(row) : false" (click)="item.customAction.action(row)">{{item.customAction.title(row)}}</button>
+                <ng-template #noaction>---</ng-template>
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Status">
+                <span [ngStyle]="{'color': item.status(row) ? item.status(row).color : 'black'}"><span class="mr-2">{{item.status(row) ? item.status(row).icon : ''}}</span><b>{{item.status(row) ? item.status(row).name : '---'}}</b></span>
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.DelegatedValue">
+                <span>{{item.delegatedValue(row) ? item.delegatedValue(row) : '---'}}</span>
+              </ng-container>
+              <ng-container *ngIf="item.type === DynamicTableItemType.Image">
+                <app-image [data]="row | tableRowValue : item.prop" [height]="50"></app-image>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

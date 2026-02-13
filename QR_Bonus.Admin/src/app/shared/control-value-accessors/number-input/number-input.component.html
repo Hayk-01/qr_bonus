@@ -1,0 +1,25 @@
+<ng-container>
+  <div class="form-group">
+      <label class="label-style" for="basicInput">
+        <span [ngStyle]="{'color': invalid && touched? 'red' : !invalid && touched? 'green' : 'black'}">{{label}}</span>
+        <span *ngIf="requierd" style="color: red;"> *</span>
+      </label>
+      <fieldset class="form-group position-relative">
+        <input
+        #input
+        appOnlyRealNumbers
+        [doNotallowFirstZero]="doNotallowFirstZero"
+        type="text"
+        class="form-control"
+        id="basicInput"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [value]="value"
+        [ngClass]="{ 'is-invalid': invalid && touched, 'is-valid': !invalid && touched }"
+        [isFloat]="isFloat"
+        [digitsLenghtAfterPoint]="digitsLenghtAfterPoint"
+      >
+      <div *ngIf="invalid && touched" class="invalid-tooltip">{{errorMessage}}</div>
+      </fieldset>
+  </div>
+</ng-container>

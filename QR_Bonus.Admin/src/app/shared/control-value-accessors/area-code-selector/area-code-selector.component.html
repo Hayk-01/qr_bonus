@@ -1,0 +1,34 @@
+<div class="form-group" [class.invalid]="touched && invalid">
+  <label class="label-style">
+    <span [ngStyle]="{'color': invalid && touched? 'red' : !invalid && touched? 'green' : 'black'}">{{label}}</span>
+    <span *ngIf="requierd" style="color: red;"> *</span>
+  </label>
+  <fieldset
+    class="form-group position-relative is-invalid"
+    [class.invalid-single]="invalid && touched"
+    [class.valid-single]="!invalid && touched"
+  >
+    <ng-select
+      [items]="areacodes"
+      bindLabel="name"
+      bindValue="value"
+      [placeholder]="'admin_phone_code' | translation"
+      [(ngModel)]="value"
+      (change)="setValue()"
+      (clear)="onClear()"
+    >
+      <ng-template ng-label-tmp let-item="item">
+        <img class="langimg mr-2" width="32" height="18" [src]="item.flag" alt="flag"/>
+        {{item.name}}
+      </ng-template>
+
+      <ng-template ng-option-tmp let-item="item">
+        <div class="select-item">
+          <img class="langimg mr-2" width="32" height="18" [src]="item.flag" alt="flag"/>
+          {{item.name}}
+        </div>
+      </ng-template>
+    </ng-select>
+    <div *ngIf="invalid && touched" class="error_message">{{errorMessage}}</div>
+  </fieldset>
+</div>

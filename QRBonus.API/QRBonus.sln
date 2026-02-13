@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRBonus.API", "QRBonus\QRBonus.API\QRBonus.API.csproj", "{ADDAA541-B73E-4E1C-A97C-E99B98687578}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRBonus.BLL", "QRBonus\QRBonus.BLL\QRBonus.BLL.csproj", "{11A1EA78-1DE2-4D1D-BB30-56CB0A3EA55C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRBonus.DAL", "QRBonus\QRBonus.DAL\QRBonus.DAL.csproj", "{91254961-C2E6-469A-BB53-19378F74C275}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QRBonus.DTO", "QRBonus\QRBonus.DTO\QRBonus.DTO.csproj", "{FEC6E742-9BAB-4641-B78C-F467F74A0A3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRBonus.Admin", "QRBonus.Admin\QRBonus.Admin.csproj", "{41654C08-92A5-44D1-B229-8C6370C9FA1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QRBonus.Shared", "QRBonus.Shared\QRBonus.Shared.csproj", "{3C84C1E4-5D03-4E9E-9EFD-4EF8006DB43E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADDAA541-B73E-4E1C-A97C-E99B98687578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDAA541-B73E-4E1C-A97C-E99B98687578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDAA541-B73E-4E1C-A97C-E99B98687578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDAA541-B73E-4E1C-A97C-E99B98687578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A1EA78-1DE2-4D1D-BB30-56CB0A3EA55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A1EA78-1DE2-4D1D-BB30-56CB0A3EA55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A1EA78-1DE2-4D1D-BB30-56CB0A3EA55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A1EA78-1DE2-4D1D-BB30-56CB0A3EA55C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91254961-C2E6-469A-BB53-19378F74C275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91254961-C2E6-469A-BB53-19378F74C275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91254961-C2E6-469A-BB53-19378F74C275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91254961-C2E6-469A-BB53-19378F74C275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC6E742-9BAB-4641-B78C-F467F74A0A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC6E742-9BAB-4641-B78C-F467F74A0A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC6E742-9BAB-4641-B78C-F467F74A0A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC6E742-9BAB-4641-B78C-F467F74A0A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41654C08-92A5-44D1-B229-8C6370C9FA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41654C08-92A5-44D1-B229-8C6370C9FA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41654C08-92A5-44D1-B229-8C6370C9FA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41654C08-92A5-44D1-B229-8C6370C9FA1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C84C1E4-5D03-4E9E-9EFD-4EF8006DB43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C84C1E4-5D03-4E9E-9EFD-4EF8006DB43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C84C1E4-5D03-4E9E-9EFD-4EF8006DB43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C84C1E4-5D03-4E9E-9EFD-4EF8006DB43E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C13224C7-7A91-4F02-A1A3-30A086429B52}
+	EndGlobalSection
+EndGlobal

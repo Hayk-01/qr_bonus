@@ -1,0 +1,32 @@
+.image_upload_block{
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: 5px;
+  padding: 5px;
+  .images{
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      width: 100%;
+      overflow-x: auto;
+      .image_container{
+          position: relative;
+          .remove_image{
+              position: absolute;
+              top: 0;
+              right: 0;
+              color: red;
+              cursor: pointer;
+              background-color: rgba(255, 255, 255, 0.315);
+              border-radius: 2px;
+              font-size: 25px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }
+      }
+  }
+}
+
+input[type="file"] {
+  color: rgba(0, 0, 0, 0);
+}

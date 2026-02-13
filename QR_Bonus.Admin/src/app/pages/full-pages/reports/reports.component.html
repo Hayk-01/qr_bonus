@@ -1,0 +1,12 @@
+<div class="row mt-1">
+  <div class="col">
+    <h5>{{'admin_reports' | translation}}</h5>
+  </div>
+  <div class="col right_side_buttons">
+    <button class="btn btn-primary" (click)="exportReport()">{{'admin_download_report' | translation}}</button>
+  </div>
+</div>
+
+<app-dynamic-filters [filters]="filters"></app-dynamic-filters>
+
+<app-dynamic-table [settings]="tableSettings"></app-dynamic-table>

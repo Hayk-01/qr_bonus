@@ -1,0 +1,115 @@
+.table-container {
+  margin-top: 10px;
+  height: calc(100dvh - 185px);
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: rgb(253, 253, 253);
+}
+
+table{
+  width: 100%;
+  thead{
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: sticky;
+    top: -2px;
+    tr{
+      th{
+        color: #404142;
+        padding: 20px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+  }
+  tbody{
+    tr{
+      border-bottom: 1px solid rgb(207, 207, 207);
+      td{
+        padding: 20px;
+        text-align: center;
+        div{
+          width: max-content;
+          margin: 0 auto;
+        }
+      }
+      &:hover{
+        background-color: rgb(241, 241, 241);
+      }
+    }
+    tr:last-child{
+      border-bottom: none;
+    }
+  }
+}
+
+.action_button{
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.disabled_action_button{
+  pointer-events: none;
+  color: grey;
+  background-color: transparent !important;
+  border: none !important;
+  font-weight: bolder;
+}
+
+.text_container {
+  max-width: 250px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+// For the image component
+app-image {
+  display: inline-block;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// For the QR code component
+app-qr-code-generator {
+  display: inline-block;
+  padding: 4px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loader{
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+}
+
+///////////////////////////////////////////////
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #dbdbdb;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c2c2c2;
+}

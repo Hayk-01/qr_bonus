@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <span *ngIf="pageType == PageType.new">{{'admin_add_product_in_campaign' | translation}}</span>
+    <span *ngIf="pageType == PageType.edit">{{'admin_campaign_product' | translation}}</span>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss({isSuccess: false})">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <app-dropdown [(ngModel)]="data.product" [returnObject]="true" [dropdownData]="productsDropDownData" [label]="'admin_product' | translation" [placeholder]="'admin_product' | translation"></app-dropdown>
+  <app-number-input [(ngModel)]="data.point" [label]="'admin_point' | translation" [placeholder]="'admin_point' | translation"></app-number-input>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close({isSuccess: false})">{{'admin_cancel' | translation}}</button>
+  <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!this.data.product || !this.data.point">
+    <span *ngIf="pageType === PageType.new">{{'admin_add' | translation}}</span>
+    <span *ngIf="pageType === PageType.edit">{{'admin_save' | translation}}</span>
+  </button>
+</div>

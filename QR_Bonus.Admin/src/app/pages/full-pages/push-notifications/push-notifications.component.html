@@ -1,0 +1,46 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">
+            <span class="text-muted">{{'Push Notification' | translation}}</span>
+          </h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+            <div class="form-row">
+              <div class="col-md-6 col-12">
+                <app-dropdown
+                  [(ngModel)]="pushNotification.regionId"
+                  [dropdownData]="regionDowpDown"
+                  [label]="'admin_region' | translation"
+                  [placeholder]="'admin_region' | translation"
+                ></app-dropdown>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-12">
+                <app-text-input
+                  [(ngModel)]="pushNotification.title"
+                  [label]="'Title' | translation"
+                  [placeholder]="'Title' | translation"
+                >
+                </app-text-input>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 col-12">
+                <app-text-input
+                  [(ngModel)]="pushNotification.message"
+                  [label]="'Message' | translation"
+                  [placeholder]="'Message' | translation"
+                >
+                </app-text-input>
+              </div>
+            </div>
+            <div style="width: 100%; display: flex; justify-content: end;">
+              <button type="submit" class="btn btn-primary" (click)="sendNofication()" [disabled]="formInvalid()"><i class="ft-check-square mr-1"></i>{{'Send' | translation}}</button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <span>{{'admin_edit_leaderboard' | translation}}</span>
+  </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss({isSuccess: false})">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="d-flex align-items-center">
+    <div class="w-50">
+      <app-dropdown [(ngModel)]="selectedPrizeId" [dropdownData]="prizeDropdownData" [label]="'admin_prize' | translation" [placeholder]="'admin_prize' | translation"></app-dropdown>
+    </div>
+    <div>
+      <button style="margin-top: 9px;" type="button" class="btn btn-outline-primary ml-2" (click)="AddItem()" [disabled]="selectedPrizeId == null || campaignStatus === CampaingStatusEnum.Completed">{{'admin_add' | translation}}</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of data.prizesAsc; let i = index">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="cursor-pointer" [class.disabled]="!isEditable(data.prizesAsc[i])" (click)="RemoveItem(i)"><i class="ft-trash danger font-weight-bolder"></i></span>
+              <span class="ml-2">{{'admin_leader_board_position' | translation}} {{i+1}}</span>
+            </div>
+            <div class="w-25">
+              <app-dropdown
+                [(ngModel)]="data.prizesAsc[i]"
+                [dropdownData]="prizeDropdownData"
+                [label]="'admin_prize' | translation"
+                [placeholder]="'admin_prize' | translation"
+                [disabled]="!isEditable(data.prizesAsc[i])"
+                [clearable]="false"
+              ></app-dropdown>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close({isSuccess: false})">{{'admin_cancel' | translation}}</button>
+  <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!data || !data.prizesAsc || data.prizesAsc.length === 0">save</button>
+</div>

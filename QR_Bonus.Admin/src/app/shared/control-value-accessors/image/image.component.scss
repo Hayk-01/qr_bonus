@@ -1,0 +1,8 @@
+.images_viewer_container {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+}

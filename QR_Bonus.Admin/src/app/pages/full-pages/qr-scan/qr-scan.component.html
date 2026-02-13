@@ -1,0 +1,12 @@
+<div class="scan_button_warpper">
+  <button class="btn btn-primary" (click)="openQrSCanDevice()">{{'admin_open_qr_scanner_device' | translation}}</button>
+  <button class="btn btn-primary" (click)="openScanner()">{{'admin_open_camera_scanner' | translation}}</button>
+</div>
+
+<div class="message_text">
+  <h5>{{'admin_courier_page_message' | translation}}</h5>
+</div>
+
+<div class="text-center m-3" *ngIf="noData">
+  <h6>{{'admin_no_data' | translation}}</h6>
+</div>

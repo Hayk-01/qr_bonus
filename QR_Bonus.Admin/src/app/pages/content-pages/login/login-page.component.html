@@ -1,0 +1,85 @@
+<!--Login Page Starts-->
+<section id="login">
+  <div class="row auth-height full-height-vh m-0">
+    <div class="col-12 d-flex align-items-center justify-content-center">
+      <div class="card overflow-hidden">
+        <div class="card-content">
+          <div class="card-body auth-img">
+            <div class="row m-0">
+              <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center auth-img-bg p-3">
+                <!-- <img src="assets/img/gallery/login.png" alt="" class="img-fluid" width="300" height="230"> -->
+                <img src="assets/logo/main_logo.png" alt="" class="img-fluid" width="300" height="230">
+              </div>
+              <div class="col-lg-6 col-12 px-4 py-3">
+                <h4 class="mb-2 card-title">{{'admin_login' | translation}}</h4>
+                <!-- <p>Welcome back, please login to your account.</p> -->
+                <!-- <ngb-alert type="light-danger" class="mb-2" *ngIf="isLoginFailed" (close)="isLoginFailed = false">
+                  <p class="mb-0">Login failed!</p>
+                </ngb-alert> -->
+                <form [formGroup]="loginForm">
+                  <div class="form-group">
+                    <input type="text" formControlName="userName" class="form-control" [placeholder]="'admin_user_name' | translation"
+                      [ngClass]="{ 'is-invalid': loginFormSubmitted && lf.userName.invalid, 'is-valid': loginFormSubmitted && !lf.userName.invalid }"
+                      required>
+                    <div *ngIf="loginFormSubmitted && (lf.userName.invalid || lf.userName.errors?.required)"
+                      class="help-block mt-1 text-danger"> <i class="ft-alert-circle align-middle"></i> {{'admin_this_field_is_required' | translation}}</div>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" formControlName="password" class="form-control" [placeholder]="'admin_password' | translation"
+                      [ngClass]="{ 'is-invalid': loginFormSubmitted && lf.password.invalid, 'is-valid': loginFormSubmitted && !lf.password.invalid }"
+                      required>
+                    <div *ngIf="loginFormSubmitted && (lf.password.invalid || lf.password.errors?.required)"
+                      class="help-block mt-1 text-danger"><i class="ft-alert-circle align-middle"></i> {{'admin_this_field_is_required' | translation}}
+                    </div>
+                  </div>
+                  <!-- <div class="d-sm-flex justify-content-between mb-3 font-small-2">
+                    <div class="remember-me mb-2 mb-sm-0">
+                      <div class="checkbox auth-checkbox">
+                        <input type="checkbox" formControlName="rememberMe" class="form-control" id="rememberMe">
+                        <label for="rememberMe"><span class="font-small-2 mb-3 font-weight-normal">Remember Me</span></label>
+                      </div>
+                    </div>
+                    <a href="javascript:;">Forgot Password?</a>
+                  </div> -->
+
+                  <div class="d-flex justify-content-end flex-sm-row flex-column">
+                    <!-- <a href="javascript:;" class="btn bg-light-primary mb-2 mb-sm-0">Register</a> -->
+                    <button  class="btn btn-primary w-100" (click)="onSubmit()">{{'admin_login' | translation}}</button>
+                  </div>
+
+                </form>
+
+                <!-- <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="text-primary m-0">Or Login With</h6>
+                  <ngx-spinner></ngx-spinner>
+                  <div class="login-options">
+                    <a class="btn btn-sm btn-social-icon btn-facebook mr-1"><span class="fa fa-facebook"></span></a>
+                    <a class="btn btn-sm btn-social-icon btn-twitter mr-1"><span class="fa fa-twitter"></span></a>
+                  </div>
+                </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Login Page Ends-->
+
+
+<div class="languge_selector fixed_position">
+  <div ngbDropdown container="body">
+    <span ngbDropdownToggle>
+      <img class="cursor-pointer" width="32" height="18" [src]="selectedLanguage.flag" alt="flag"/>
+    </span>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+      <button class="dropdown-item w-100" *ngFor="let language of languages" (click)="selectLanguage(language)">
+        <img class="langimg mr-2" width="32" height="18" [src]="language.flag" alt="flag"/>
+        <span class="font-small-3">{{language.title | translation}}</span>
+      </button>
+    </div>
+  </div>
+</div>

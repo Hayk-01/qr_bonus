@@ -1,0 +1,55 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#reader {
+    width: 600px;
+}
+
+::ng-deep {
+  // .html5-qrcode-element{
+  //   background-color: rgb(147, 89, 255) !important;
+  //   color: white !important;
+  //   border: none !important;
+  //   border-radius: 5px !important;
+  //   padding: 10px !important;
+  // }
+
+  #html5-qrcode-anchor-scan-type-change {
+    display: none !important;
+  }
+
+  #reader__dashboard_section_csr{
+    button{
+      background-color: rgb(45, 129, 255);
+      color: white;
+    }
+    position: fixed;
+    bottom: 10px;
+  }
+
+  // #reader__scan_region{
+  //   height: 80vh !important;
+  //   overflow: hidden;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+  // #reader{
+  //   height: 80vh;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   // overflow: hidden;
+  // }
+
+  // #reader__scan_region{
+  //   width: 250px;
+  //   height: 250px;
+  //   // margin: 50px auto;
+  // }
+
+}

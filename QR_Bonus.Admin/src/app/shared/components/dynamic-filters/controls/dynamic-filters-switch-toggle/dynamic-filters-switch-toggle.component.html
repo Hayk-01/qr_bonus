@@ -1,0 +1,15 @@
+<!-- <div style="height: 78px;" class="custom-switch custom-control-inline d-flex align-items-center" [formGroup]="form">
+  <input
+    type="checkbox"
+    class="custom-control-input"
+    [id]="formControlName"
+    [formControlName]="formControlName"
+  >
+  <label class="custom-control-label mr-1 cursor-pointer" [for]="formControlName">
+    <span>{{label}}</span>
+  </label>
+</div> -->
+
+<div style="height: 60px; box-sizing: border-box; padding-top: 18px;" [formGroup]="form">
+  <app-switch-toggle [label]="label" [returnNullWhenValueIsFalse]="returnNullWhenValueIsFalse" [formControlName]="formControlName"></app-switch-toggle>
+</div>

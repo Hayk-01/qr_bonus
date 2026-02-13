@@ -1,0 +1,20 @@
+.alert-light-danger {
+  background-color: #FEEFD0 !important;
+  color: #F55252  !important;
+  border-color: #FEEFD0;
+}
+
+.languge_selector{
+  text-align: end;
+  margin-top: 10px;
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
+
+.fixed_position {
+  position: fixed;
+  top: 3px;
+  right: 15px;
+}
+

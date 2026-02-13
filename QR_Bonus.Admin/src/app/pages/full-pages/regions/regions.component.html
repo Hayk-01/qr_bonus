@@ -1,0 +1,12 @@
+<div class="row mt-1">
+    <div class="col">
+        <h5>{{'admin_regions' | translation}}</h5>
+    </div>
+    <div class="col right_side_buttons">
+        <button routerLink="new" class="btn btn-primary">{{'admin_region_add' | translation}}</button>
+    </div>
+ </div>
+
+ <app-dynamic-filters [filters]="filters"></app-dynamic-filters>
+
+<app-dynamic-table [settings]="tableSettings"></app-dynamic-table>

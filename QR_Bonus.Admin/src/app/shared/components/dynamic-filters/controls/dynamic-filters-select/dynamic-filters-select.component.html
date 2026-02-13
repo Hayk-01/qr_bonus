@@ -1,0 +1,43 @@
+<div [title]="getTitle(form.value[formControlName])" class="form-group" [formGroup]="form">
+  <label class="label">{{label}}</label>
+  <div class="form-group" [class.deleted_item]="isSelectedItemDeleted(form.value[formControlName])">
+      <ng-select
+        #searchinput
+        [items]="items"
+        bindLabel="name"
+        bindValue="id"
+        [multiple]="multiple"
+        [placeholder]="placeholder"
+        [searchable]="true"
+        [formControlName]="formControlName"
+        [virtualScroll]="true"
+        (scrollToEnd)="scrollEnd()"
+        (search)="search($event)"
+        (clear)="onClearAll()"
+      >
+
+        <ng-template ng-label-tmp let-item="item">
+          <span *ngIf="displayId"><b>id</b>: {{item.id}} | </span>{{item.name}}
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item">
+          <div class="select-item" title="{{item.title}}"
+               [ngStyle]="{'color': item.isDeleted ? 'red' : 'none'}"><span *ngIf="displayId"><b>id</b>: {{item.id}} | </span>{{(item.name == undefined || item.name.trim() == "" || item.name == null) ? '---' : item.name}}</div>
+        </ng-template>
+
+        <ng-container *ngIf="multiple">
+          <ng-template ng-multi-label-tmp let-items="items">
+            <div *ngFor="let item of items" class="selected_option">
+              <span [ngClass]="{'deleted_item': isSelectedItemDeleted(item.id)}">
+                <span class="remove-icon" (click)="removeItem(item.id)">
+                  <span>&times;</span>
+                </span> <span class="selected_option_text"><span *ngIf="displayId"><b>id</b>: {{item.id}} | </span>{{(item.name == undefined || item.name.trim() == "" || item.name == null) ? '---' : item.name}}</span>
+              </span>
+            </div>
+          </ng-template>
+        </ng-container>
+
+      </ng-select>
+  </div>
+</div>
+

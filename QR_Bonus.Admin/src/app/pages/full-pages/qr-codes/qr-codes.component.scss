@@ -1,0 +1,11 @@
+.title_buttons{
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: wrap;
+}
+.right_side_buttons {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  flex-wrap: wrap;
+}

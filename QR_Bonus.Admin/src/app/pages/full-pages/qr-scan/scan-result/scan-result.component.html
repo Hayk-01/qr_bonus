@@ -1,0 +1,37 @@
+<ng-container *ngIf="data">
+  <div class="card">
+    <div class="card-header">
+      <h4>{{'admin_customer_prize_info' | translation}}</h4>
+    </div>
+    <div class="card-body">
+      <p><strong>{{'admin_customer' | translation}}: </strong>{{data?.customer?.firstName}} {{data?.customer?.lastName}}</p>
+      <p><strong>{{'admin_customer_phone_number' | translation}}: </strong>{{data.customer?.phoneNumber}}</p>
+      <p><strong>{{'admin_the_prize_has_been_given_away' | translation}}</strong> {{data.isWinReceived ? ('admin_yes' | translation) : ('admin_no' | translation)}}</p>
+      <p><strong>{{'admin_comfirmed_by_customer' | translation}}</strong> {{data.hasCustomerConfirmed ? ('admin_yes' | translation) : ('admin_no' | translation)}}</p>
+      <p *ngIf="data.prize && data.prize.link"><strong>{{'admin_prize' | translation}}: </strong><app-image [data]="data.prize.link" [height]="100"></app-image></p>
+    </div>
+    <div class="card-footer" *ngIf="!data.isWinReceived">
+      <button class="btn btn-primary" (click)="receivePrize()">{{'admin_give_the_prize' | translation}}</button>
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="!loading && !data && !qrCodeNotUsedYet" class="text-center m-3">
+  <h6>{{'admin_no_data' | translation}}</h6>
+</div>
+
+<div *ngIf="qrCodeNotUsedYet" class="text-center m-3">
+  <h6>{{'admin_qr_code_not_used_yet' | translation}}</h6>
+</div>
+
+<div class="loader" *ngIf="loading">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><linearGradient id="a11"><stop offset="0" stop-color="#1e1e1f" stop-opacity="0"></stop>
+    <stop offset="1" stop-color="#1e1e1f"></stop></linearGradient><circle fill="none" stroke="url(#a11)" stroke-width="15" stroke-linecap="round"
+    stroke-dasharray="0 44 0 44 0 44 0 44 0 360" cx="100" cy="100" r="70" transform-origin="center"><animateTransform type="rotate" attributeName="transform"
+    calcMode="discrete" dur="2" values="360;324;288;252;216;180;144;108;72;36" repeatCount="indefinite"></animateTransform></circle>
+  </svg>
+</div>
+
+<div class="save_cancel_buttons">
+  <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="mr-1"></i>{{'admin_back' | translation}}</button>
+</div>

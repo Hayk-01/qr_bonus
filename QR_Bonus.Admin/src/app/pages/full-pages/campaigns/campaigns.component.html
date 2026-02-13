@@ -1,0 +1,12 @@
+<div class="row mt-1">
+  <div class="col d-flex align-items-center justify-content-start">
+    <h5>{{'admin_campaigns' | translation}}</h5>
+  </div>
+  <div class="col right_side_buttons d-flex align-items-center justify-content-end" style="gap: 5px;">
+    <button routerLink="new" class="btn btn-primary">{{'admin_add_campaign' | translation}}</button>
+  </div>
+</div>
+
+<app-dynamic-filters [filters]="filters"></app-dynamic-filters>
+
+<app-dynamic-table #table [settings]="tableSettings"></app-dynamic-table>

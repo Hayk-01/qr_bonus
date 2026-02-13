@@ -1,0 +1,42 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">
+            <span *ngIf="type === PageType.new" class="text-muted">{{'admin_new_user' | translation}}</span>
+            <span *ngIf="type === PageType.edit" class="text-muted">{{'admin_edit_user' | translation}} : {{data.firstName}} {{data.lastName}}</span>
+          </h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                  <div class="form-row">
+                      <div class="col-md-6 col-12">
+                        <app-text-input formControlName="firstName" [label]="'admin_first_name' | translation" [placeholder]="'admin_first_name' | translation" [touched]="touched" [invalid]="form.get('firstName').invalid" [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('firstName').errors)"></app-text-input>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <app-text-input formControlName="lastName" [label]="'admin_last_name' | translation" [placeholder]="'admin_last_name' | translation" [touched]="touched" [invalid]="form.get('lastName').invalid" [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('lastName').errors)"></app-text-input>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="col-md-6 col-12">
+                        <app-text-input formControlName="userName" [label]="'admin_user_name' | translation" [placeholder]="'admin_user_name' | translation" [touched]="touched" [invalid]="form.get('userName').invalid" [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('userName').errors)"></app-text-input>
+                      </div>
+                      <div class="col-md-6 col-12">
+                        <app-password-input formControlName="password" [label]="'admin_password' | translation" [placeholder]="'admin_password' | translation" [touched]="touched" [invalid]="form.get('password').invalid"[errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('password').errors)"></app-password-input>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="col-md-6 col-12">
+                        <app-dropdown [disabled]="type === PageType.edit" [items]="roles" formControlName="role" [label]="'admin_role' | translation" [placeholder]="'admin_role' | translation" [touched]="touched" [invalid]="form.get('role').invalid" [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('role').errors)"></app-dropdown>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="save_cancel_buttons">
+  <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="ft-x mr-1"></i>{{'admin_cancel' | translation}}</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class="ft-check-square mr-1"></i>{{'admin_save' | translation}}</button>
+</div>

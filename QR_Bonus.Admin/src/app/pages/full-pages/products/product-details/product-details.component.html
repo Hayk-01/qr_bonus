@@ -1,0 +1,74 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">
+            <span *ngIf="type === PageType.new" class="text-muted">{{'admin_new_product' | translation}}</span>
+            <span *ngIf="type === PageType.edit" class="text-muted">{{'admin_edit_product' | translation}} : {{name}}</span>
+          </h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+              <form [formGroup]="form">
+                  <div class="form-row">
+                      <div class="col-md-6 col-12">
+                        <div formArrayName="translations">
+                          <div [formGroupName]="0">
+                            <app-text-input
+                              formControlName="name"
+                              [label]="'admin_name_english' | translation"
+                              [placeholder]="'admin_name_english' | translation"
+                              [touched]="touched"
+                              [invalid]="translations.controls[0].get('name').invalid"
+                              [errorMessage]="formErrorMessageProviderService.getErrorMessage(translations.controls[0].get('name').errors)"
+                            >
+                            </app-text-input>
+                          </div>
+                          <div [formGroupName]="1">
+                            <app-text-input
+                              formControlName="name"
+                              [label]="'admin_name_georgian' | translation"
+                              [placeholder]="'admin_name_georgian' | translation"
+                              [touched]="touched"
+                              [invalid]="translations.controls[1].get('name').invalid"
+                              [errorMessage]="formErrorMessageProviderService.getErrorMessage(translations.controls[1].get('name').errors)"
+                            >
+                            </app-text-input>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-6 col-12">
+                      <app-dropdown
+                        formControlName="regionId"
+                        [dropdownData]="regionDowpDown"
+                        [label]="'admin_region' | translation"
+                        [placeholder]="'admin_region' | translation"
+                        [touched]="touched"
+                        [invalid]="form.get('regionId').invalid"
+                        [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('regionId').errors)"
+                        [disabled]="type === PageType.edit"
+                      ></app-dropdown>
+                    </div>
+                  </div>
+                  <div class="form-group mb-2">
+                    <label>{{'admin_image' | translation}}</label>
+                    <div class="image_upload_block">
+                        <input #fileInput type="file" class="mb-2" (change)="uploadImage($event)">
+                        <div class="images">
+                            <div class="image_container" *ngIf="image">
+                                <app-image [data]="image" [height]="150"></app-image>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="save_cancel_buttons">
+  <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="ft-x mr-1"></i>{{'admin_cancel' | translation}}</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class="ft-check-square mr-1"></i>{{'admin_save' | translation}}</button>
+</div>

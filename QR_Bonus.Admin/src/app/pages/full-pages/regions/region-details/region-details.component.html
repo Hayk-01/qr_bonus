@@ -1,0 +1,57 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header">
+          <h4 class="card-title">
+            <span *ngIf="type === PageType.new" class="text-muted">{{'admin_new_region' | translation}}</span>
+            <span *ngIf="type === PageType.edit" class="text-muted">{{'admin_edit_region' | translation}} :  {{name}}</span>
+          </h4>
+      </div>
+      <div class="card-content">
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <div class="col-md-6 col-12">
+                  <app-area-code-selector
+                    formControlName="areaCode"
+                    [label]="'admin_phone_code' | translation"
+                    [touched]="touched"
+                    [invalid]="form.get('areaCode').invalid"
+                    [errorMessage]="formErrorMessageProviderService.getErrorMessage(form.get('areaCode').errors)"
+                  >
+                  </app-area-code-selector>
+                  <div formArrayName="translations">
+                    <div [formGroupName]="0">
+                      <app-text-input
+                        formControlName="name"
+                        [label]="'admin_region_name_english' | translation"
+                        [placeholder]="'admin_region_name_english' | translation"
+                        [touched]="touched"
+                        [invalid]="translations.controls[0].get('name').invalid"
+                        [errorMessage]="formErrorMessageProviderService.getErrorMessage(translations.controls[0].get('name').errors)"
+                      >
+                      </app-text-input>
+                    </div>
+                    <div [formGroupName]="1">
+                      <app-text-input
+                        formControlName="name"
+                        [label]="'admin_region_name_georgian' | translation"
+                        [placeholder]="'admin_region_name_georgian' | translation"
+                        [touched]="touched"
+                        [invalid]="translations.controls[1].get('name').invalid"
+                        [errorMessage]="formErrorMessageProviderService.getErrorMessage(translations.controls[1].get('name').errors)"
+                      >
+                      </app-text-input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="save_cancel_buttons">
+  <button type="button" class="btn btn-secondary mr-2" (click)="location.back()"><i class="ft-x mr-1"></i>{{'admin_cancel' | translation}}</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()"><i class="ft-check-square mr-1"></i>{{'admin_save' | translation}}</button>
+</div>

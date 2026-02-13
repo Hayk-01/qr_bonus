@@ -1,0 +1,25 @@
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+.disable{
+  pointer-events: none;
+  color: rgb(192, 192, 192);
+}
+
+.qr_codes_filters{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.qr_codes_paginatin_download{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
