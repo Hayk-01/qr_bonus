@@ -44,13 +44,7 @@
     "Priority": "2",
     "IsTestMode": false
   },
-  "ElasticConfiguration": {
-    "Uri": "https://elasticoff.innline.net",
-    "DataSet": "QRBonus",
-    "Namespace": "Prod",
-    "Username": "elastic",
-    "Password": "ypk_ujLsAy=IM9Nyakf_"
-  },
+
   "FileSettings": {
     "FilePath": "/var/www/website/QR_Bonus/QrBonusAdminMedia",
     "RequestPath": "/media"
