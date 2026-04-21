@@ -23,8 +23,8 @@ jobs:
 
       - name: Push images
         run: |
-          docker push hhayq/frontend:${{ github.sha }}
-          docker push hhayq/backend:${{ github.sha }}
+          docker push hhayq/qr_bonus.admin:${{ github.sha }}
+          docker push hhayq/qrbonus.api:${{ github.sha }}
 
   deploy:
     needs: build
@@ -38,8 +38,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           script: |
-            kubectl set image deployment/frontend frontend=hhayq/frontend:${{ github.sha }}
-            kubectl set image deployment/backend backend=hhayq/backend:${{ github.sha }}
+            kubectl set image deployment/frontend frontend=hhayq/qr_bonus.admin:${{ github.sha }}
+            kubectl set image deployment/backend backend=hhayq/qrbonus.api:${{ github.sha }}
 
             kubectl rollout status deployment/frontend
             kubectl rollout status deployment/backend
