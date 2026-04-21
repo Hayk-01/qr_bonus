@@ -16,10 +16,10 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build frontend
-        run: docker build -t hhayq/QR_Bonus.Admin:${{ github.sha }} ./frontend
+        run: docker build -t hhayq/qr_bonus.admin:${{ github.sha }} ./frontend
 
       - name: Build backend
-        run: docker build -t hhayq/QRBonus.API:${{ github.sha }} ./backend
+        run: docker build -t hhayq/qrbonus.api:${{ github.sha }} ./backend
 
       - name: Push images
         run: |
