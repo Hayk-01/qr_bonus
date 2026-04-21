@@ -1,0 +1,45 @@
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build frontend
+        run: docker build -t yourdockerhub/frontend:${{ github.sha }} ./frontend
+
+      - name: Build backend
+        run: docker build -t yourdockerhub/backend:${{ github.sha }} ./backend
+
+      - name: Push images
+        run: |
+          docker push hhayq/frontend:${{ github.sha }}
+          docker push hhayq/backend:${{ github.sha }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.MASTER_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            kubectl set image deployment/frontend frontend=hhayq/frontend:${{ github.sha }}
+            kubectl set image deployment/backend backend=hhayq/backend:${{ github.sha }}
+
+            kubectl rollout status deployment/frontend
+            kubectl rollout status deployment/backend
