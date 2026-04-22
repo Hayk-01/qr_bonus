@@ -27,7 +27,7 @@ spec:
       containers:
         - name: frontend
 
-          image: hhayq/qr_bonus.admin:${TAG}
+          image: hhayq/qr_bonus.admin:latest
 
           imagePullPolicy: IfNotPresent
 
