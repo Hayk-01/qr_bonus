@@ -36,7 +36,8 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.MASTER_IP }}
-          username: ubuntu
+          port: 9875
+          username: root
           key: ${{ secrets.SSH_KEY }}
           script: |
             kubectl set image deployment/frontend frontend=hhayq/qr_bonus.admin:${{ github.sha }}
