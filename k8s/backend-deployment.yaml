@@ -27,7 +27,7 @@ spec:
       containers:
         - name: backend
 
-          image: yourdockerhub/backend:__TAG__
+          image: hhayq/qrbonus.api:${TAG}
 
           imagePullPolicy: IfNotPresent
 
