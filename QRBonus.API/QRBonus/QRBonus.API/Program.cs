@@ -23,7 +23,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.WithMachineName()
     .WriteTo.Debug()
     .WriteTo.Console()
-    .WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
+    //.WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
     {
         opts.DataStream = new DataStreamName("logs", builder.Configuration["ElasticConfiguration:DataSet"]!,
             builder.Configuration["ElasticConfiguration:Namespace"]!);
@@ -55,7 +55,7 @@ try
         .MinimumLevel.Override("QRBonus", LogEventLevel.Information)
         .Enrich.FromLogContext()
         .WriteTo.Console()
-        .WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
+        //.WriteTo.Elasticsearch(new[] { new Uri(builder.Configuration["ElasticConfiguration:Uri"]!) }, opts =>
         {
             opts.DataStream = new DataStreamName("logs", builder.Configuration["ElasticConfiguration:DataSet"]!,
                 builder.Configuration["ElasticConfiguration:Namespace"]!);
