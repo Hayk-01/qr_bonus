@@ -4,8 +4,8 @@ on:
     branches: [main, master]
   workflow_dispatch:
 env:
-  BACKEND_IMAGE: ghcr.io/${{ github.repository_owner }}/qr_bonus-backend
-  FRONTEND_IMAGE: ghcr.io/${{ github.repository_owner }}/qr_bonus-frontend
+  BACKEND_IMAGE: ghcr.io/hayk-01/qr_bonus-backend
+  FRONTEND_IMAGE: ghcr.io/hayk-01/qr_bonus-frontend
 jobs:
   build-backend:
     name: Build Backend
